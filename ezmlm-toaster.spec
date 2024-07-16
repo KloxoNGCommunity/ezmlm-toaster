@@ -47,7 +47,7 @@ Obsoletes: 	ezmlm-idx, ezmlm-toaster-doc
 Conflicts: 	ezmlm, ezmlm-idx-std, ezmlm-idx-pgsql, ezmlm-idx-mysql
 BuildRequires:  libnsl >= 2.28
 BuildRequires:  mysql-devel
-Requires:       mysql
+#Requires:       mysql
 
 #-------------------------------------------------------------------------------
 %description
