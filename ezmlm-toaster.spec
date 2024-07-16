@@ -3,7 +3,7 @@
 %define	ezmlmversion 0.53
 %define 	pversion %{ezmlmversion}.324
 %define 	bversion 1.3
-%define	rpmrelease 10.kng%{?dist}
+%define	rpmrelease 11.kng%{?dist}
 
 %define         release %{bversion}.%{rpmrelease}
 %define         apacheuser apache
@@ -40,10 +40,14 @@ Packager: 	Jake Vickers <jake@qmailtoaster.com>
 Source0: 	ftp://koobera.math.uic.edu/pub/software/ezmlm-%{ezmlmversion}.tar.bz2
 Source1: 	ftp://ftp.id.wustl.edu/pub/patches/ezmlm-idx-%{idxversion}.tar.bz2
 Source2: 	ezman-%{idxversion}.html.tar.bz2
+Patch0: 	ezmlm-gcc.patch
 Summary: 	Qmail Easy Mailing List Manager + IDX patches with %{dbase} database support.
 Group: 		Utilities/System 
 Obsoletes: 	ezmlm-idx, ezmlm-toaster-doc
 Conflicts: 	ezmlm, ezmlm-idx-std, ezmlm-idx-pgsql, ezmlm-idx-mysql
+BuildRequires:  libnsl >= 2.28
+BuildRequires:  mysql-devel
+Requires:       mysql
 
 #-------------------------------------------------------------------------------
 %description
@@ -108,7 +112,7 @@ Group:		Networking/Other
 Requires:	%{name} >= %{pversion}-%{release}
 #Requires:	control-panel-toaster >= 0.2
 
-#Requires:	httpd >= 2.0.40
+Requires:	httpd >= 2.0.40
 
 #-------------------------------------------------------------------------------
 %description	-n ezmlm-cgi-toaster
@@ -129,7 +133,7 @@ echo "gcc" > %{_tmppath}/%{name}-%{pversion}-%{gccver}
 
 mv -f ezmlm-idx-%{idxversion}/* .
 patch -s < idx.patch
-
+%patch0 -p1
 
 #-------------------------------------------------------------------------------
 %build 
@@ -199,7 +203,8 @@ cp $RPM_BUILD_DIR/ezmlm-%{ezmlmversion}/ezmlm-cgi %{buildroot}/%{basedir}/cgi-bi
 cp $RPM_BUILD_DIR/ezmlm-%{ezmlmversion}/ezcgirc %{buildroot}/%{_sysconfdir}/ezmlm/ezcgirc
 cp $RPM_BUILD_DIR/ezmlm-%{ezmlmversion}/ezcgirc %{buildroot}/%{_sysconfdir}/ezmlm/ezcgirc.dist
 
-tar fvxj %{buildroot}/ezman-%{idxversion}.html.tar.bz2
+#tar fvxj %{buildroot}/ezman-%{idxversion}.html.tar.bz2
+tar xvfj %{SOURCE2}
 
 
 #-------------------------------------------------------------------------------
