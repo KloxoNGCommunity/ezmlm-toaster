@@ -8,8 +8,6 @@
 %define         release %{bversion}.%{rpmrelease}
 %define         apacheuser apache
 %define         apachegroup apache
-#BuildRequires:  mysql-devel >= 5.0.22, mysql >= 5.0.22
-Requires:       mysql >= 5.0.22
 BuildRequires: zlib-devel
 %if %{?fedora}0 > 150 || %{?rhel}0 > 70
 Requires:      libnsl ,	perl
