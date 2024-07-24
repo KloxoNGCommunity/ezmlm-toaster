@@ -1,7 +1,7 @@
 %define	name ezmlm
 %define	idxversion 0.40
 %define	ezmlmversion 0.53
-%define 	pversion %{ezmlmversion}.324
+%define 	pversion %{ezmlmversion}.325
 %define 	bversion 1.3
 %define	rpmrelease 11.kng%{?dist}
 
@@ -44,7 +44,7 @@ Group: 		Utilities/System
 Obsoletes: 	ezmlm-idx, ezmlm-toaster-doc
 Conflicts: 	ezmlm, ezmlm-idx-std, ezmlm-idx-pgsql, ezmlm-idx-mysql
 BuildRequires:  libnsl >= 2.28
-BuildRequires:  mysql-devel
+BuildRequires:  mariadb-devel
 #Requires:       mysql
 
 #-------------------------------------------------------------------------------
