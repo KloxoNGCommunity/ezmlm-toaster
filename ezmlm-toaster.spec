@@ -3,7 +3,7 @@
 %define	ezmlmversion 0.53
 %define 	pversion %{ezmlmversion}.325
 %define 	bversion 1.3
-%define	rpmrelease 11.kng%{?dist}
+%define	rpmrelease 12.kng%{?dist}
 
 %define         release %{bversion}.%{rpmrelease}
 %define         apacheuser apache
@@ -131,7 +131,7 @@ echo "gcc" > %{_tmppath}/%{name}-%{pversion}-%{gccver}
 
 mv -f ezmlm-idx-%{idxversion}/* .
 patch -s < idx.patch
-%patch0 -p1
+%patch 0 -p1
 
 #-------------------------------------------------------------------------------
 %build 
